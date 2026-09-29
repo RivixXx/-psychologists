@@ -65,65 +65,112 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 @media(max-width:1250px){.dashboard-grid{grid-template-columns:minmax(0,1fr) minmax(0,300px)}}
 
 
-/* Soft liquid-glass CTA lens based on the FreeFrontend example */
-.btn.primary{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  min-height:48px;
-  padding:0 54px 0 22px;
-  border:1px solid rgba(255,255,255,.42);
-  border-radius:999px;
-  color:#202126;
-  text-shadow:0 1px 1px rgba(255,255,255,.45);
-  background:
-    radial-gradient(ellipse at 24% -28%,rgba(255,255,255,.98) 0%,rgba(255,255,255,.58) 30%,transparent 68%),
-    linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.31) 54%,rgba(255,255,255,.58));
-  backdrop-filter:blur(16px) saturate(1.45);
-  -webkit-backdrop-filter:blur(16px) saturate(1.45);
-  box-shadow:
-    inset 2px 2px 2px rgba(255,255,255,.95),
-    inset -2px -2px 2px rgba(255,255,255,.88),
-    inset 0 0 9px rgba(255,255,255,.72),
-    inset 0 -8px 14px rgba(150,157,169,.15),
-    0 8px 18px rgba(39,43,52,.12),
-    0 2px 4px rgba(39,43,52,.08);
+/* Liquid Glass Lens CTA adapted from the FreeFrontend SVG lens button */
+.fx-layer{
+  display:inline-flex;
+  vertical-align:middle;
+  max-width:100%;
+  filter:contrast(3);
 }
-.btn.primary::before{
+.fx-layer.full{display:flex;width:100%}
+.box.start-btn{
+  --w:auto;
+  --h:50px;
+  --r:9999px;
+  --tr:15%;
+  position:relative;
+  z-index:1;
+  width:var(--w);
+  height:var(--h);
+  min-height:var(--h);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:0 7px 0 21px;
+  border:1px double rgba(51,51,51,.08);
+  border-radius:var(--r);
+  color:#3e3e3e;
+  background:rgba(0,0,0,.02);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  box-shadow:
+    inset 2px -2px 1px -1px rgba(255,255,255,.9),
+    inset -2px 2px 1px -1px rgba(255,255,255,.9),
+    inset 6px -6px 1px -6px rgba(255,255,255,.55),
+    inset -6px 6px 1px -6px rgba(255,255,255,.55),
+    inset 0 0 2px rgba(0,0,0,.8),
+    0 4px 8px rgba(0,0,0,.2);
+  cursor:pointer;
+  user-select:none;
+}
+.box.start-btn.full{width:100%}
+.box.start-btn:before{
   content:"";
   position:absolute;
-  z-index:0;
-  inset:2px 7px auto;
-  height:54%;
-  border-radius:999px;
-  pointer-events:none;
-  background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.24) 58%,transparent);
-  filter:blur(2px);
-}
-.btn.primary::after{
-  content:"›";
-  position:absolute;
   z-index:1;
-  right:6px;
-  top:50%;
-  width:36px;
-  height:36px;
-  display:grid;
-  place-items:center;
-  transform:translateY(-50%);
-  border-radius:50%;
-  color:#fff;
-  background:#050505;
-  box-shadow:0 2px 5px rgba(0,0,0,.18),inset 0 1px 1px rgba(255,255,255,.2);
-  font-family:Arial,sans-serif;
-  font-size:27px;
-  font-weight:300;
-  line-height:1;
+  top:35%;
+  left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 16px);
+  height:calc(100% - 16px);
+  border-radius:var(--r);
+  border:1px solid rgba(0,0,0,.9);
+  filter:blur(8px);
   pointer-events:none;
 }
-.btn.primary:disabled{filter:saturate(.75);cursor:wait}
+.box.start-btn:after{
+  content:"";
+  position:absolute;
+  z-index:4;
+  inset:0;
+  border-radius:var(--r);
+  filter:blur(7px);
+  background:linear-gradient(45deg,rgba(255,255,255,.8) 0%,transparent var(--tr),transparent calc(100% - var(--tr)),rgba(255,255,255,.8) 100%);
+  pointer-events:none;
+}
+.box.start-btn .lens-label{
+  position:relative;
+  z-index:3;
+  color:#3e3e3e;
+  white-space:nowrap;
+  filter:drop-shadow(0 5px 3px rgba(102,102,102,.15));
+}
+.box.start-btn .btn-icon{
+  position:relative;
+  z-index:3;
+  width:38px;
+  height:38px;
+  flex:0 0 38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  color:#f5f5f5;
+  background:#3e3e3e;
+  box-shadow:0 0 6px rgba(0,0,0,.3);
+}
+.box.start-btn .btn-icon .svg{
+  width:16px;
+  height:16px;
+  fill:#f5f5f5;
+  stroke:#f5f5f5;
+  stroke-width:1.7;
+  filter:drop-shadow(0 3px 2px rgba(0,0,0,.2));
+}
+.box.start-btn .circle-overlay{
+  position:absolute;
+  z-index:2;
+  inset:4px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:var(--r);
+  filter:blur(1px);
+  pointer-events:none;
+}
+.box.start-btn:focus-visible{outline:3px solid #79a99d;outline-offset:3px}
 @media(forced-colors:active){
-  .btn.primary{border:1px solid ButtonText;background:ButtonFace;color:ButtonText;text-shadow:none;box-shadow:none;backdrop-filter:none}
-  .btn.primary::before{display:none}
-  .btn.primary::after{border:1px solid ButtonText;background:ButtonFace;color:ButtonText;box-shadow:none}
+  .fx-layer{filter:none}
+  .box.start-btn{border:1px solid ButtonText;background:ButtonFace;color:ButtonText;box-shadow:none;backdrop-filter:none}
+  .box.start-btn:before,.box.start-btn:after,.box.start-btn .circle-overlay{display:none}
+  .box.start-btn .btn-icon{border:1px solid ButtonText;background:ButtonFace;color:ButtonText;box-shadow:none}
 }
