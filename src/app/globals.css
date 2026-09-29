@@ -174,3 +174,85 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
   .box.start-btn:before,.box.start-btn:after,.box.start-btn .circle-overlay{display:none}
   .box.start-btn .btn-icon{border:1px solid ButtonText;background:ButtonFace;color:ButtonText;box-shadow:none}
 }
+
+
+/* Forest glass navigation with candy-gloss icons */
+.sidebar{
+  background:rgba(238,246,242,.72);
+  border-right:1px solid rgba(255,255,255,.66);
+  box-shadow:8px 0 28px rgba(30,64,55,.06);
+  backdrop-filter:blur(22px) saturate(1.12);
+  -webkit-backdrop-filter:blur(22px) saturate(1.12);
+}
+.sidebar nav{gap:7px}
+.nav-item{
+  min-height:50px;
+  gap:12px;
+  padding:7px 10px;
+  border:1px solid transparent;
+  border-radius:16px;
+  background:rgba(255,255,255,.12);
+  color:#52645f;
+  transition:background .38s ease,border-color .38s ease,color .38s ease,box-shadow .38s ease;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.nav-item:hover{
+  background:rgba(255,255,255,.48);
+  border-color:rgba(255,255,255,.72);
+  color:#244f48;
+  box-shadow:0 5px 16px rgba(25,66,56,.08),inset 0 1px 0 rgba(255,255,255,.8);
+}
+.nav-item.active{
+  background:linear-gradient(125deg,rgba(235,247,242,.88),rgba(204,230,221,.7));
+  border-color:rgba(255,255,255,.88);
+  color:#164f48;
+  box-shadow:0 5px 16px rgba(25,76,64,.1),inset 0 1px 0 rgba(255,255,255,.94),inset 0 -1px 0 rgba(106,158,142,.11);
+}
+.nav-item .nav-icon{
+  --candy:#6ab6a5;
+  --candy-light:#a8decf;
+  --candy-deep:#347f73;
+  --candy-shadow:rgba(19,75,65,.33);
+  position:relative;
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:50%;
+  color:rgba(255,255,255,.98);
+  background:radial-gradient(ellipse at 31% 20%,rgba(255,255,255,.98) 0 5%,rgba(255,255,255,.48) 13%,transparent 33%),radial-gradient(ellipse at 36% 28%,var(--candy-light) 0%,var(--candy) 47%,var(--candy-deep) 100%);
+  box-shadow:inset 2px 2px 3px rgba(255,255,255,.8),inset -3px -4px 7px var(--candy-shadow),0 3px 8px rgba(27,68,59,.16);
+  transition:transform .38s cubic-bezier(.22,1,.36,1),box-shadow .38s ease,filter .38s ease;
+}
+.nav-item .nav-icon::before{
+  z-index:1;
+  left:21%;
+  top:10%;
+  width:42%;
+  height:22%;
+  background:rgba(255,255,255,.78);
+  filter:blur(.7px);
+}
+.nav-item .nav-icon::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:50%;
+  box-shadow:inset 0 0 5px rgba(255,255,255,.28);
+  pointer-events:none;
+}
+.nav-item .nav-icon svg{position:relative;z-index:2;width:16px;height:16px;filter:drop-shadow(0 1px 1px rgba(18,60,52,.28))}
+.nav-item:hover .nav-icon{transform:translateY(-1px) scale(1.04);box-shadow:inset 2px 2px 3px rgba(255,255,255,.88),inset -3px -4px 7px var(--candy-shadow),0 5px 12px rgba(27,68,59,.21);filter:saturate(1.08)}
+.nav-item.active:hover{background:linear-gradient(125deg,rgba(235,247,242,.92),rgba(204,230,221,.76));border-color:rgba(255,255,255,.9);color:#164f48;box-shadow:0 5px 16px rgba(25,76,64,.11),inset 0 1px 0 rgba(255,255,255,.94),inset 0 -1px 0 rgba(106,158,142,.11)}\n.nav-item.active .nav-icon{transform:scale(1.035)}
+.nav-item:nth-child(2) .nav-icon{--candy:#679bc5;--candy-light:#a8d2ef;--candy-deep:#386b9b;--candy-shadow:rgba(28,67,111,.34)}
+.nav-item:nth-child(3) .nav-icon{--candy:#d68178;--candy-light:#f4b5a8;--candy-deep:#a94f50;--candy-shadow:rgba(111,42,46,.32)}
+.nav-item:nth-child(4) .nav-icon{--candy:#d4a64f;--candy-light:#f6d98d;--candy-deep:#9a7132;--candy-shadow:rgba(103,71,24,.32)}
+.nav-item:nth-child(5) .nav-icon{--candy:#967fc0;--candy-light:#c6b3ed;--candy-deep:#68549d;--candy-shadow:rgba(64,48,105,.34)}
+.nav-item:nth-child(6) .nav-icon{--candy:#53aeb4;--candy-light:#9ce0dc;--candy-deep:#287680;--candy-shadow:rgba(25,75,83,.33)}
+.nav-item:nth-child(7) .nav-icon{--candy:#78a96b;--candy-light:#badd9f;--candy-deep:#4b7845;--candy-shadow:rgba(46,79,39,.32)}
+.nav-item:nth-child(8) .nav-icon{--candy:#7f99a3;--candy-light:#b8ced3;--candy-deep:#536c76;--candy-shadow:rgba(37,60,67,.32)}
+.nav-item:focus-visible{outline:3px solid rgba(103,172,154,.6);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.nav-item,.nav-item .nav-icon{transition:none}}
