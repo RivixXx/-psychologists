@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState, type ComponentProps } from "react";
+import { FormEvent, useEffect, useMemo, useState, type ComponentProps, type ReactNode } from "react";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 
 type Person = { id:number; name:string; title:string; rating:number; reviews:number; experience:string; tags:string[]; photo:string; availability:string };
@@ -11,7 +11,7 @@ type Resource = { id:number; title:string; category:string; read_time:string; co
 type Data = { psychologists:Person[]; requests:RequestItem[]; appointments:Appointment[]; messages:MessageItem[]; resources:Resource[]; profile:{name:string;email:string} };
 
 
-function LiquidButton({ children, className = "", ...props }: ComponentProps<typeof motion.button>) {
+function LiquidButton({ children, className = "", ...props }: Omit<ComponentProps<typeof motion.button>, "children"> & { children: ReactNode }) {
   return <span className={`fx-layer ${className.split(" ").includes("full") ? "full" : ""}`}>
     <motion.button {...props} className={`box start-btn btn primary ${className}`}>
       <span className="lens-label">{children}</span>
