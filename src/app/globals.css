@@ -61,3 +61,5 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .hero,.hero-copy{min-width:0;max-width:100%}
 @media(max-width:900px){.dashboard-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){.app-shell,.main-area,.content-area{overflow-x:hidden}.right-column,.people-grid.large{grid-template-columns:repeat(2,minmax(0,1fr))}.unread-panel{grid-column:1/-1}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.form-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dashboard-grid{grid-template-columns:minmax(0,1fr) minmax(0,300px)}
+@media(max-width:1250px){.dashboard-grid{grid-template-columns:minmax(0,1fr) minmax(0,300px)}}
